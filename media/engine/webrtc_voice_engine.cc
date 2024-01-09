@@ -2285,6 +2285,7 @@ bool WebRtcVoiceMediaChannel::MuteStream(uint32_t ssrc, bool muted) {
     ap->set_output_will_be_muted(all_muted);
   }
 
+  engine_->audio_state()->OnMuteStreamChanged();
   return true;
 }
 

@@ -418,12 +418,14 @@ bool AudioSendStream::SendTelephoneEvent(int payload_type,
                                                   payload_frequency);
   return channel_send_->SendTelephoneEventOutband(event, duration_ms);
 }
-
 void AudioSendStream::SetMuted(bool muted) {
   RTC_DCHECK_RUN_ON(&worker_thread_checker_);
   channel_send_->SetInputMute(muted);
 }
-
+bool AudioSendStream::GetMuted() {
+  RTC_DCHECK_RUN_ON(&worker_thread_checker_);
+  return channel_send_->InputMute();
+}
 webrtc::AudioSendStream::Stats AudioSendStream::GetStats() const {
   return GetStats(true);
 }
