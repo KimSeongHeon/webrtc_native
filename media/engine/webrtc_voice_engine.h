@@ -134,6 +134,8 @@ class WebRtcVoiceEngine final : public VoiceEngineInterface {
   // Stops AEC dump.
   void StopAecDump() override;
 
+  webrtc::AudioState* audio_state();
+
   absl::optional<webrtc::AudioDeviceModule::Stats> GetAudioDeviceStats()
       override;
 
@@ -148,7 +150,6 @@ class WebRtcVoiceEngine final : public VoiceEngineInterface {
 
   webrtc::AudioDeviceModule* adm();
   webrtc::AudioProcessing* apm() const;
-  webrtc::AudioState* audio_state();
 
   std::vector<AudioCodec> CollectCodecs(
       const std::vector<webrtc::AudioCodecSpec>& specs) const;
